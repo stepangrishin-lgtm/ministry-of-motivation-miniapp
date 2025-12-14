@@ -27,11 +27,18 @@ export default function App() {
 
         tg.ready();
 
-        const initData = tg.initData;
+        const user = tg.initDataUnsafe?.user;
 
-        const { data, error } = await supabase.functions.invoke("telegram-login", {
-          body: { initData },
-        });
+if (!user?.id) {
+  throw new Error("Telegram user not found");
+}
+
+const { data, error } = await supabase.functions.invoke("telegram-login", {
+  body: {
+    telegram_id: user.id,
+    full_name: user.first_name,
+  },
+});
 
         if (error) throw error;
 
