@@ -59,12 +59,22 @@ export default function App() {
       )}
 
       {employee && (
-        <div style={{ marginTop: 16 }}>
-          <p><b>Здравствуйте{employee.full_name ? , ${employee.full_name} : ""}!</b></p>
-          <p>Роль: <b>{employee.role}</b></p>
-          <p>Баланс: <b>{employee.balance_points}</b> баллов</p>
-        </div>
-      )}
+  <div style={{ marginTop: 16 }}>
+    <p>
+      <b>
+        Здравствуйте{employee.full_name ? ", " + employee.full_name : ""}!
+      </b>
+    </p>
+
+    <p>
+      Роль: <b>{employee.role}</b>
+    </p>
+
+    <p>
+      Баланс: <b>{employee.balance_points}</b> баллов
+    </p>
+  </div>
+)}
     </div>
   );
 }
